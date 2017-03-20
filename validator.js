@@ -1,5 +1,5 @@
 function Validator() {
-	this.isValidPesel = function(pesel) {
+	this.isValidPesel = function (pesel) {
 		var regex = /^\d{11}$/;
 
 		if (!regex.test(pesel)) {
@@ -9,12 +9,12 @@ function Validator() {
 		var magic = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
 		var sum = 0;
 
-		for (var i = 0; i < magic.length; i++) {
-			sum += magic[i] * parseInt(pesel.substring(i, i + 1), 10);
+		for (var i = 0; i < 10; i++) {
+			sum += magic[i] * pesel.charAt(i);
 		}
 
 		sum %= 10;
-		var checksum = parseInt(pesel.substring(10, 11), 10);
+		var checksum = pesel.charAt(10);
 
 		if (sum == checksum) {
 			return true;
@@ -34,12 +34,12 @@ function Validator() {
 		var magic = [6, 5, 7, 2, 3, 4, 5, 6, 7];
 		var sum = 0;
 
-		for (var i = 0; i < magic.length; i++) {
-			sum += magic[i] * parseInt(nip.substring(i, i + 1), 10);
+		for (var i = 0; i < 9; i++) {
+			sum += magic[i] * nip.charAt(i);
 		}
 
 		sum %= 11;
-		var checksum = parseInt(nip.substring(9, 10), 10);
+		var checksum = nip.charAt(9);
 
 		if (sum == checksum) {
 			return true;
@@ -62,12 +62,12 @@ function Validator() {
 		if (regon.length == 9) {
 			var sum = 0;
 
-			for (var i = 0; i < magic9.length; i++) {
-				sum += magic9[i] * parseInt(regon.substring(i, i + 1), 10);
+			for (var i = 0; i < 8; i++) {
+				sum += magic9[i] * regon.charAt(i);
 			}
 
 			sum %= 11;
-			var checksum = parseInt(regon.substring(8, 9), 10);
+			var checksum = regon.charAt(8);
 
 			if (sum == 10) {
 				sum = 0;
@@ -84,12 +84,12 @@ function Validator() {
 		if (regon.length == 14) {
 			var sum = 0;
 
-			for (var i = 0; i < magic14.length; i++) {
-				sum += magic14[i] * parseInt(regon.substring(i, i + 1), 10);
+			for (var i = 0; i < 13; i++) {
+				sum += magic14[i] * regon.charAt(i);
 			}
 
 			sum %= 11;
-			var checksum = parseInt(regon.substring(13, 14), 10);
+			var checksum = regon.charAt(13);
 
 			if (sum == 10) {
 				sum = 0;
